@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Une question, nos voyages ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    /* SLIDESHOW */
+    .slideshow {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: slideShow 32s infinite;
+    }
+
+    .slide:nth-child(1) { animation-delay: 0s; }
+    .slide:nth-child(2) { animation-delay: 8s; }
+    .slide:nth-child(3) { animation-delay: 16s; }
+    .slide:nth-child(4) { animation-delay: 24s; }
+
+    @keyframes slideShow {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      25% { opacity: 1; }
+      35% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* OVERLAY */
+    .overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.35);
+      z-index: -1;
+    }
+
+    /* CARD */
+    .card {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.95);
+      padding: 40px;
+      border-radius: 22px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .question {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 14px 26px;
+      border-radius: 14px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #yes:hover {
+      transform: scale(1.1);
+    }
+
+    #no {
+      background: #e0e0e0;
+      position: relative;
+    }
+
+    .result {
+      display: none;
+      margin-top: 25px;
+      font-size: 1.4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDES -->
+  <div class="slideshow">
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1600&q=80');">
+    </div> <!-- Marrakech -->
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1600&q=80');">
+    </div> <!-- Madère -->
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1590608897129-79da98d15969?auto=format&fit=crop&w=1600&q=80');">
+    </div> <!-- Balos -->
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1601573858409-7c9e5f9c6c0f?auto=format&fit=crop&w=1600&q=80');">
+    </div> <!-- Figeac -->
+  </div>
+
+  <div class="overlay"></div>
+
+  <!-- CONTENT -->
+  <div class="card">
+    <div class="box">
+      <h1>Nous deux</h1>
+      <div class="subtitle">
+        Marrakech · Madère · Balos · Figeac
+      </div>
+
+      <div class="question">
+        Après tous ces voyages,<br>
+        est-ce que tu veux être ma Valentine<br>
+        le 14 février ? ❤️
+      </div>
+
+      <div class="buttons">
+        <button id="yes">Oui 💖</button>
+        <button id="no">Non</button>
+      </div>
+
+      <div class="result" id="result">
+        💕 Prochaine destination : ensemble 💕
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const result = document.getElementById("result");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 160 - 80;
+      const y = Math.random() * 120 - 60;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      result.style.display = "block";
+      yesBtn.disabled = true;
+      noBtn.disabled = true;
+    });
+  </script>
+
+</body>
+</html>
