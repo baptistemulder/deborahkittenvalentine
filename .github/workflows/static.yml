@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Question très sérieuse 🐱❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      background: linear-gradient(120deg, #ffd6e0, #fff1c1);
+    }
+
+    /* CHATS FLOTTANTS */
+    .cat {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.6;
+      animation: float 18s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      from { transform: translateY(110vh) rotate(0deg); }
+      to   { transform: translateY(-120vh) rotate(360deg); }
+    }
+
+    /* OVERLAY */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.6);
+      z-index: -1;
+    }
+
+    /* CARD */
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 24px;
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .question {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 14px 26px;
+      border-radius: 14px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #yes:hover {
+      transform: scale(1.1);
+    }
+
+    #no {
+      background: #ddd;
+      position: relative;
+    }
+
+    .result {
+      display: none;
+      margin-top: 25px;
+      font-size: 1.4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CHATS PARTOUT -->
+  <div class="cat" style="left:5%; animation-duration:22s;">🐱</div>
+  <div class="cat" style="left:15%; animation-duration:18s;">🐈</div>
+  <div class="cat" style="left:30%; animation-duration:26s;">😺</div>
+  <div class="cat" style="left:45%; animation-duration:20s;">😻</div>
+  <div class="cat" style="left:60%; animation-duration:24s;">🐱</div>
+  <div class="cat" style="left:75%; animation-duration:19s;">🐈‍⬛</div>
+  <div class="cat" style="left:90%; animation-duration:28s;">😽</div>
+
+  <div class="overlay"></div>
+
+  <!-- CONTENU -->
+  <div class="container">
+    <div class="card">
+      <h1>Question importante 🐾</h1>
+      <div class="subtitle">
+        Chats + toi = moi très heureux
+      </div>
+
+      <div class="question">
+        Est-ce que tu veux être ma Valentine<br>
+        le 14 février ? ❤️🐱
+      </div>
+
+      <div class="buttons">
+        <button id="yes">Oui 😻</button>
+        <button id="no">Non 😿</button>
+      </div>
+
+      <div class="result" id="result">
+        🐾 Mission réussie. Les chats approuvent. 🐾
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const result = document.getElementById("result");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 160 - 80;
+      const y = Math.random() * 120 - 60;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      result.style.display = "block";
+      yesBtn.disabled = true;
+      noBtn.disabled = true;
+    });
+  </script>
+
+</body>
+</html>
